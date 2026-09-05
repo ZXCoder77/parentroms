@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FBNeo Parent ROMs Filter - FinalBurn Neo DAT Extractor</title>
+  <meta name="description" content="Ferramenta interativa para carregar arquivos .dat do FinalBurn Neo e listar apenas as Parent ROMs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(18, 26, 44, 0.65);
+      --bg-card-hover: rgba(26, 37, 62, 0.8);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(0, 242, 254, 0.4);
+      
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-violet: #7f00ff;
+      --accent-pink: #ff007f;
+      --accent-emerald: #00f5a0;
+      --accent-amber: #ffb300;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      
+      --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.15);
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(127, 0, 255, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, rgba(9, 13, 22, 1) 100%);
+      background-attachment: fixed;
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 32px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    }
+
+    .logo-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+    }
+
+    .title-area h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-area p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .badge-tag {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--accent-cyan);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    /* Main Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    /* Upload Zone */
+    .dropzone-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 40px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--accent-cyan);
+      background: rgba(26, 37, 62, 0.85);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+
+    .dropzone-card input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      transition: var(--transition-fast);
+    }
+
+    .dropzone-card:hover .upload-icon-wrapper {
+      transform: scale(1.1);
+      background: rgba(0, 242, 254, 0.1);
+    }
+
+    .upload-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .upload-hint {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #090d16;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Info Banner */
+    .info-banner {
+      background: rgba(127, 0, 255, 0.1);
+      border: 1px solid rgba(127, 0, 255, 0.3);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: #d8b4fe;
+    }
+
+    .info-banner svg {
+      flex-shrink: 0;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition-fast);
+    }
+
+    .stat-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .stat-icon.blue { background: rgba(79, 172, 254, 0.15); color: var(--accent-blue); }
+    .stat-icon.emerald { background: rgba(0, 245, 160, 0.15); color: var(--accent-emerald); }
+    .stat-icon.violet { background: rgba(127, 0, 255, 0.15); color: #c084fc; }
+    .stat-icon.amber { background: rgba(255, 179, 0, 0.15); color: var(--accent-amber); }
+
+    .stat-info .stat-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .stat-info .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Control & Filter Bar */
+    .controls-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px 10px 42px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-fast);
+    }
+
+    .input-field:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
+    }
+
+    .select-field {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-main);
+      font-size: 0.875rem;
+      outline: none;
+      cursor: pointer;
+      min-width: 160px;
+    }
+
+    .select-field:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* Data Table */
+    .table-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      padding: 14px 18px;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.775rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition-fast);
+    }
+
+    th:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    th .th-content {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    th .sort-icon {
+      font-size: 0.75rem;
+      opacity: 0.4;
+    }
+
+    th.sorted .sort-icon {
+      opacity: 1;
+      color: var(--accent-cyan);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition-fast);
+    }
+
+    tbody tr:hover {
+      background: var(--bg-card-hover);
+    }
+
+    tbody td {
+      padding: 14px 18px;
+      vertical-align: middle;
+    }
+
+    .rom-code {
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+
+    .rom-desc {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .rom-year {
+      font-family: 'Fira Code', monospace;
+      color: var(--accent-amber);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .rom-manufacturer {
+      color: var(--text-muted);
+    }
+
+    .empty-state {
+      padding: 60px 24px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-state svg {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 16px;
+      color: var(--text-subtle);
+    }
+
+    .empty-state h3 {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    /* Pagination */
+    .pagination-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(15, 23, 42, 0.6);
+      border-top: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .page-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .page-btn {
+      min-width: 34px;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .page-btn:hover:not(:disabled) {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .page-btn.active {
+      background: var(--accent-cyan);
+      color: #090d16;
+      font-weight: 700;
+      border-color: var(--accent-cyan);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Loading Overlay */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(0, 242, 254, 0.1);
+      border-top-color: var(--accent-cyan);
+      border-radius: 50%;
+      animation: spin 1s infinite linear;
+      margin-bottom: 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .loading-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Details Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+      overflow: hidden;
+    }
+
+    .modal-backdrop.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: var(--text-main);
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .detail-group {
+      margin-bottom: 16px;
+    }
+
+    .detail-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .detail-val {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-filter-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .results-count {
+        margin-left: 0;
+      }
+      th:nth-child(4), td:nth-child(4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-title">Processando DAT...</div>
+    <div class="loading-sub" id="loading-subtitle">Analisando tags e extraindo Parent ROMs...</div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-backdrop" id="detail-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-game-title">Detalhes da ROM</div>
+        <button class="close-btn" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="logo-group">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="title-area">
+            <h1>FinalBurn Neo Parent ROMs</h1>
+            <p>Filtrador e Extrator de Parent ROMs (Arquivos DAT / XML)</p>
+          </div>
+        </div>
+        <div class="badge-tag">FinalBurn Neo v1.0</div>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Upload Dropzone Card -->
+      <div class="dropzone-card" id="drop-zone">
+        <input type="file" id="file-input" accept=".dat,.xml,.txt">
+        <div class="upload-icon-wrapper">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <div class="upload-title">Arraste e solte o arquivo roms.dat aqui</div>
+        <div class="upload-hint">Suporta XML Datfile do FinalBurn Neo / Logiqx (.dat / .xml)</div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Selecionar Arquivo DAT
+          </button>
+          <button class="btn btn-secondary" id="btn-load-sample">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg>
+            Carregar roms.dat Local
+          </button>
+        </div>
+      </div>
+
+      <!-- Rule Banner -->
+      <div class="info-banner">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span><strong>Regra de Parent ROM:</strong> São incluídas apenas as ROMs originais/principais que <u>não possuem</u> os atributos <code>cloneof</code> nem <code>romof</code>.</span>
+      </div>
+
+      <!-- Metrics Cards (Hidden initially until file loaded) -->
+      <div class="stats-grid" id="stats-grid" style="display: none;">
+        <div class="stat-card">
+          <div class="stat-icon blue">🎮</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-total-games">0</div>
+            <div class="stat-label">Total de Jogos no DAT</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon emerald">⭐</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-parent-games">0</div>
+            <div class="stat-label">Parent ROMs (Principais)</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon violet">🧬</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-clone-games">0</div>
+            <div class="stat-label">Clones Ignorados</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber">📊</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-parent-ratio">0%</div>
+            <div class="stat-label">Proporção de Parents</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Filters (Hidden initially) -->
+      <div class="controls-card" id="controls-card" style="display: none;">
+        <div class="search-filter-row">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" class="input-field" placeholder="Buscar por ROM, descrição, ano ou fabricante...">
+          </div>
+          <select id="manufacturer-filter" class="select-field">
+            <option value="">Todos os Fabricantes</option>
+          </select>
+          <select id="year-filter" class="select-field">
+            <option value="">Todos os Anos</option>
+          </select>
+          <button class="btn btn-secondary" id="btn-export-csv" title="Exportar tabela filtrada para CSV">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar CSV
+          </button>
+          <button class="btn btn-secondary" id="btn-export-json" title="Exportar tabela filtrada para JSON">
+            Exportar JSON
+          </button>
+          <span class="results-count" id="results-count">Mostrando 0 de 0 ROMs</span>
+        </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-container" id="table-container" style="display: none;">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">
+                <div class="th-content">
+                  <span>Nome (ROM)</span>
+                  <span class="sort-icon">↕</span>
+                </div>
+              </th>
+              <th data-sort="description">
+                <div class="th-content">
+                  <span>Descrição / Título</span>
+                  <span class="sort-icon">↕</span>
+                </div>
+              </th>
+              <th data-sort="year">
+                <div class="th-content">
+                  <span>Ano</span>
+                  <span class="sort-icon">↕</span>
+                </div>
+              </th>
+              <th data-sort="manufacturer">
+                <div class="th-content">
+                  <span>Fabricante</span>
+                  <span class="sort-icon">↕</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Table rows injected via JS -->
+          </tbody>
+        </table>
+
+        <!-- Empty state placeholder -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <h3>Nenhuma Parent ROM encontrada</h3>
+          <p>Tente ajustar os termos de pesquisa ou filtros selecionados.</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-bar" id="pagination-bar">
+          <div class="page-info" id="page-info">Página 1 de 1</div>
+          <div class="page-controls" id="page-controls">
+            <!-- Buttons injected via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State management
+    let rawGamesData = [];
+    let parentGames = [];
+    let filteredParentGames = [];
+    
+    let currentPage = 1;
+    const itemsPerPage = 25;
+    let currentSort = { column: 'name', dir: 'asc' };
+
+    // DOM Elements
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const btnLoadSample = document.getElementById('btn-load-sample');
+    
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const loadingTitle = document.getElementById('loading-title');
+    const loadingSubtitle = document.getElementById('loading-subtitle');
+    
+    const statsGrid = document.getElementById('stats-grid');
+    const statTotalGames = document.getElementById('stat-total-games');
+    const statParentGames = document.getElementById('stat-parent-games');
+    const statCloneGames = document.getElementById('stat-clone-games');
+    const statParentRatio = document.getElementById('stat-parent-ratio');
+    
+    const controlsCard = document.getElementById('controls-card');
+    const searchInput = document.getElementById('search-input');
+    const manufacturerFilter = document.getElementById('manufacturer-filter');
+    const yearFilter = document.getElementById('year-filter');
+    const resultsCount = document.getElementById('results-count');
+    
+    const tableContainer = document.getElementById('table-container');
+    const tableBody = document.getElementById('table-body');
+    const emptyState = document.getElementById('empty-state');
+    const paginationBar = document.getElementById('pagination-bar');
+    const pageInfo = document.getElementById('page-info');
+    const pageControls = document.getElementById('page-controls');
+
+    const btnExportCsv = document.getElementById('btn-export-csv');
+    const btnExportJson = document.getElementById('btn-export-json');
+
+    const detailModal = document.getElementById('detail-modal');
+    const modalGameTitle = document.getElementById('modal-game-title');
+    const modalBodyContent = document.getElementById('modal-body-content');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    // Event Listeners for File Drag & Drop
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('dragover');
+      });
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length > 0) {
+        processFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        processFile(e.target.files[0]);
+      }
+    });
+
+    // Auto-load roms.dat if available via fetch
+    btnLoadSample.addEventListener('click', async () => {
+      showLoading('Carregando roms.dat...', 'Lendo arquivo local da pasta...');
+      try {
+        const response = await fetch('roms.dat');
+        if (!response.ok) throw new Error('Não foi possível carregar o arquivo local via HTTP.');
+        const text = await response.text();
+        parseDatContent(text, 'roms.dat');
+      } catch (err) {
+        hideLoading();
+        alert('Não foi possível carregar roms.dat automaticamente (' + err.message + '). Por favor, clique em "Selecionar Arquivo DAT" e escolha o roms.dat no seu computador.');
+      }
+    });
+
+    // Process uploaded file
+    function processFile(file) {
+      showLoading('Lendo arquivo...', file.name);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target.result;
+        parseDatContent(content, file.name);
+      };
+      reader.onerror = () => {
+        hideLoading();
+        alert('Erro ao ler o arquivo selecionado.');
+      };
+      reader.readAsText(file);
+    }
+
+    // Parse XML Dat Content
+    function parseDatContent(xmlText, fileName) {
+      showLoading('Analisando XML...', 'Filtrando parent roms...');
+      
+      // Allow UI to update loading state
+      setTimeout(() => {
+        try {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+          
+          let gameNodes = xmlDoc.querySelectorAll('game, machine');
+          
+          // Fallback parsing using regex if DOMParser returns error or no game nodes
+          if (gameNodes.length === 0) {
+            console.warn('DOMParser retornou 0 jogos, tentando parser Regex alternativo...');
+            parentGames = parseWithRegex(xmlText);
+          } else {
+            let totalCount = gameNodes.length;
+            let cloneCount = 0;
+            parentGames = [];
+
+            gameNodes.forEach(node => {
+              const cloneof = node.getAttribute('cloneof');
+              const romof = node.getAttribute('romof');
+              
+              // Parent ROM definition: does NOT have cloneof and does NOT have romof
+              const isClone = (cloneof && cloneof.trim() !== '') || (romof && romof.trim() !== '');
+              
+              if (!isClone) {
+                const name = node.getAttribute('name') || 'desconhecido';
+                const descNode = node.querySelector('description');
+                const yearNode = node.querySelector('year');
+                const manufNode = node.querySelector('manufacturer') || node.querySelector('publisher');
+                
+                const description = descNode ? descNode.textContent.trim() : name;
+                const year = yearNode ? yearNode.textContent.trim() : 'N/A';
+                const manufacturer = manufNode ? manufNode.textContent.trim() : 'Desconhecido';
+                
+                // Get list of inner ROMs for detailed modal view
+                const romElements = node.querySelectorAll('rom');
+                const roms = [];
+                romElements.forEach(r => {
+                  roms.push({
+                    name: r.getAttribute('name'),
+                    size: r.getAttribute('size'),
+                    crc: r.getAttribute('crc')
+                  });
+                });
+
+                parentGames.push({
+                  name,
+                  description,
+                  year,
+                  manufacturer,
+                  sourcefile: node.getAttribute('sourcefile') || '',
+                  romsCount: roms.length,
+                  roms: roms
+                });
+              } else {
+                cloneCount++;
+              }
+            });
+
+            updateStats(totalCount, parentGames.length, cloneCount);
+          }
+
+          populateFilterDropdowns();
+          applyFilters();
+          
+          // Reveal UI components
+          statsGrid.style.display = 'grid';
+          controlsCard.style.display = 'block';
+          tableContainer.style.display = 'block';
+
+        } catch (err) {
+          console.error(err);
+          alert('Erro ao processar o formato do arquivo XML/DAT: ' + err.message);
+        } finally {
+          hideLoading();
+        }
+      }, 50);
+    }
+
+    // Regex fallback parser for non-standard XML
+    function parseWithRegex(text) {
+      const gameRegex = /<(?:game|machine)\s+([^>]+)>([\s\S]*?)<\/(?:game|machine)>/gi;
+      const parents = [];
+      let total = 0;
+      let clones = 0;
+      let match;
+
+      while ((match = gameRegex.exec(text)) !== null) {
+        total++;
+        const attrStr = match[1];
+        const innerStr = match[2];
+
+        const hasCloneof = /cloneof\s*=\s*"([^"]+)"/i.test(attrStr);
+        const hasRomof = /romof\s*=\s*"([^"]+)"/i.test(attrStr);
+
+        if (!hasCloneof && !hasRomof) {
+          const nameMatch = /name\s*=\s*"([^"]+)"/i.exec(attrStr);
+          const descMatch = /<description>([^<]+)<\/description>/i.exec(innerStr);
+          const yearMatch = /<year>([^<]+)<\/year>/i.exec(innerStr);
+          const manufMatch = /<(?:manufacturer|publisher)>([^<]+)<\/(?:manufacturer|publisher)>/i.exec(innerStr);
+
+          parents.push({
+            name: nameMatch ? nameMatch[1] : 'desconhecido',
+            description: descMatch ? descMatch[1].trim() : (nameMatch ? nameMatch[1] : ''),
+            year: yearMatch ? yearMatch[1].trim() : 'N/A',
+            manufacturer: manufMatch ? manufMatch[1].trim() : 'Desconhecido',
+            sourcefile: '',
+            romsCount: 0,
+            roms: []
+          });
+        } else {
+          clones++;
+        }
+      }
+      updateStats(total, parents.length, clones);
+      return parents;
+    }
+
+    // Update Statistics Bar
+    function updateStats(total, parents, clones) {
+      statTotalGames.textContent = total.toLocaleString('pt-BR');
+      statParentGames.textContent = parents.toLocaleString('pt-BR');
+      statCloneGames.textContent = clones.toLocaleString('pt-BR');
+      const ratio = total > 0 ? ((parents / total) * 100).toFixed(1) : 0;
+      statParentRatio.textContent = ratio + '%';
+    }
+
+    // Populate Manufacturer and Year Dropdowns
+    function populateFilterDropdowns() {
+      const manufacturers = new Set();
+      const years = new Set();
+
+      parentGames.forEach(g => {
+        if (g.manufacturer && g.manufacturer !== 'Desconhecido') manufacturers.add(g.manufacturer);
+        if (g.year && g.year !== 'N/A') years.add(g.year);
+      });
+
+      // Populate Manufacturer Select
+      manufacturerFilter.innerHTML = '<option value="">Todos os Fabricantes</option>';
+      Array.from(manufacturers).sort().forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        manufacturerFilter.appendChild(opt);
+      });
+
+      // Populate Year Select
+      yearFilter.innerHTML = '<option value="">Todos os Anos</option>';
+      Array.from(years).sort().reverse().forEach(y => {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        yearFilter.appendChild(opt);
+      });
+    }
+
+    // Apply Filter & Search Logic
+    function applyFilters() {
+      const query = searchInput.value.toLowerCase().trim();
+      const selectedManuf = manufacturerFilter.value;
+      const selectedYear = yearFilter.value;
+
+      filteredParentGames = parentGames.filter(game => {
+        const matchesSearch = !query || 
+          game.name.toLowerCase().includes(query) ||
+          game.description.toLowerCase().includes(query) ||
+          game.year.toLowerCase().includes(query) ||
+          game.manufacturer.toLowerCase().includes(query);
+
+        const matchesManuf = !selectedManuf || game.manufacturer === selectedManuf;
+        const matchesYear = !selectedYear || game.year === selectedYear;
+
+        return matchesSearch && matchesManuf && matchesYear;
+      });
+
+      // Apply current sorting
+      sortData();
+
+      currentPage = 1;
+      renderTable();
+    }
+
+    // Sorting Logic
+    function sortData() {
+      const { column, dir } = currentSort;
+      const mult = dir === 'asc' ? 1 : -1;
+
+      filteredParentGames.sort((a, b) => {
+        let valA = (a[column] || '').toString().toLowerCase();
+        let valB = (b[column] || '').toString().toLowerCase();
+        return valA.localeCompare(valB, 'pt-BR', { numeric: true }) * mult;
+      });
+    }
+
+    // Render Data Table
+    function renderTable() {
+      tableBody.innerHTML = '';
+
+      resultsCount.textContent = `Mostrando ${filteredParentGames.length.toLocaleString('pt-BR')} de ${parentGames.length.toLocaleString('pt-BR')} Parent ROMs`;
+
+      if (filteredParentGames.length === 0) {
+        emptyState.style.display = 'block';
+        paginationBar.style.display = 'none';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      paginationBar.style.display = 'flex';
+
+      const totalPages = Math.ceil(filteredParentGames.length / itemsPerPage);
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIdx = (currentPage - 1) * itemsPerPage;
+      const endIdx = startIdx + itemsPerPage;
+      const pageItems = filteredParentGames.slice(startIdx, endIdx);
+
+      pageItems.forEach(game => {
+        const tr = document.createElement('tr');
+        tr.style.cursor = 'pointer';
+        tr.title = 'Clique para ver detalhes desta ROM';
+        tr.onclick = () => openGameModal(game);
+
+        tr.innerHTML = `
+          <td><span class="rom-code">${escapeHtml(game.name)}</span></td>
+          <td><span class="rom-desc">${escapeHtml(game.description)}</span></td>
+          <td><span class="rom-year">${escapeHtml(game.year)}</span></td>
+          <td><span class="rom-manufacturer">${escapeHtml(game.manufacturer)}</span></td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      renderPagination(totalPages);
+    }
+
+    // Render Pagination Controls
+    function renderPagination(totalPages) {
+      pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+      pageControls.innerHTML = '';
+
+      // Prev Button
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'page-btn';
+      prevBtn.innerHTML = '&laquo;';
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => { currentPage--; renderTable(); };
+      pageControls.appendChild(prevBtn);
+
+      // Page numbers (smart sliding window)
+      let startPage = Math.max(1, currentPage - 2);
+      let endPage = Math.min(totalPages, currentPage + 2);
+
+      if (startPage > 1) {
+        const p1 = createPageBtn(1);
+        pageControls.appendChild(p1);
+        if (startPage > 2) {
+          const dots = document.createElement('span');
+          dots.className = 'page-info';
+          dots.textContent = '...';
+          pageControls.appendChild(dots);
+        }
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageControls.appendChild(createPageBtn(i));
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+          const dots = document.createElement('span');
+          dots.className = 'page-info';
+          dots.textContent = '...';
+          pageControls.appendChild(dots);
+        }
+        pageControls.appendChild(createPageBtn(totalPages));
+      }
+
+      // Next Button
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'page-btn';
+      nextBtn.innerHTML = '&raquo;';
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => { currentPage++; renderTable(); };
+      pageControls.appendChild(nextBtn);
+    }
+
+    function createPageBtn(pageNum) {
+      const btn = document.createElement('button');
+      btn.className = `page-btn ${pageNum === currentPage ? 'active' : ''}`;
+      btn.textContent = pageNum;
+      btn.onclick = () => { currentPage = pageNum; renderTable(); };
+      return btn;
+    }
+
+    // Modal Details
+    function openGameModal(game) {
+      modalGameTitle.textContent = `${game.description} (${game.name})`;
+      
+      let romsHtml = '';
+      if (game.roms && game.roms.length > 0) {
+        romsHtml = `
+          <div class="detail-group">
+            <div class="detail-label">Arquivos Internos (${game.roms.length})</div>
+            <table style="width:100%; font-size:0.8rem; margin-top:8px;">
+              <thead>
+                <tr>
+                  <th style="padding:6px;">Arquivo</th>
+                  <th style="padding:6px;">Tamanho</th>
+                  <th style="padding:6px;">CRC32</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${game.roms.map(r => `
+                  <tr>
+                    <td style="padding:6px; font-family:monospace;">${escapeHtml(r.name || '')}</td>
+                    <td style="padding:6px;">${r.size ? Number(r.size).toLocaleString('pt-BR') + ' B' : 'N/A'}</td>
+                    <td style="padding:6px; font-family:monospace;">${escapeHtml(r.crc || '')}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      modalBodyContent.innerHTML = `
+        <div class="detail-group">
+          <div class="detail-label">Nome da ROM (SET)</div>
+          <div class="detail-val"><span class="rom-code">${escapeHtml(game.name)}</span></div>
+        </div>
+        <div class="detail-group">
+          <div class="detail-label">Descrição Oficial</div>
+          <div class="detail-val"><strong>${escapeHtml(game.description)}</strong></div>
+        </div>
+        <div style="display:flex; gap:24px;">
+          <div class="detail-group" style="flex:1;">
+            <div class="detail-label">Ano</div>
+            <div class="detail-val"><span class="rom-year">${escapeHtml(game.year)}</span></div>
+          </div>
+          <div class="detail-group" style="flex:2;">
+            <div class="detail-label">Fabricante</div>
+            <div class="detail-val">${escapeHtml(game.manufacturer)}</div>
+          </div>
+        </div>
+        ${game.sourcefile ? `
+          <div class="detail-group">
+            <div class="detail-label">Arquivo de Origem (Source Driver)</div>
+            <div class="detail-val" style="font-family:monospace; font-size:0.85rem; color:var(--text-muted);">${escapeHtml(game.sourcefile)}</div>
+          </div>
+        ` : ''}
+        ${romsHtml}
+      `;
+
+      detailModal.classList.add('active');
+    }
+
+    modalCloseBtn.onclick = () => detailModal.classList.remove('active');
+    detailModal.onclick = (e) => { if (e.target === detailModal) detailModal.classList.remove('active'); };
+
+    // Header Sort Handlers
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.getAttribute('data-sort');
+        if (currentSort.column === col) {
+          currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.column = col;
+          currentSort.dir = 'asc';
+        }
+
+        document.querySelectorAll('th').forEach(header => {
+          header.classList.remove('sorted');
+          const icon = header.querySelector('.sort-icon');
+          if (icon) icon.textContent = '↕';
+        });
+
+        th.classList.add('sorted');
+        const icon = th.querySelector('.sort-icon');
+        if (icon) icon.textContent = currentSort.dir === 'asc' ? '↑' : '↓';
+
+        sortData();
+        renderTable();
+      });
+    });
+
+    // Search and Dropdown Listeners
+    searchInput.addEventListener('input', applyFilters);
+    manufacturerFilter.addEventListener('change', applyFilters);
+    yearFilter.addEventListener('change', applyFilters);
+
+    // Export CSV
+    btnExportCsv.addEventListener('click', () => {
+      if (filteredParentGames.length === 0) return;
+
+      const headers = ['Nome', 'Descrição', 'Ano', 'Fabricante'];
+      const rows = filteredParentGames.map(g => [
+        `"${g.name.replace(/"/g, '""')}"`,
+        `"${g.description.replace(/"/g, '""')}"`,
+        `"${g.year.replace(/"/g, '""')}"`,
+        `"${g.manufacturer.replace(/"/g, '""')}"`
+      ]);
+
+      const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      downloadFile(csvContent, 'parent_roms_fbneo.csv', 'text/csv;charset=utf-8;');
+    });
+
+    // Export JSON
+    btnExportJson.addEventListener('click', () => {
+      if (filteredParentGames.length === 0) return;
+      const jsonContent = JSON.stringify(filteredParentGames, null, 2);
+      downloadFile(jsonContent, 'parent_roms_fbneo.json', 'application/json');
+    });
+
+    function downloadFile(content, fileName, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Helper utilities
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function showLoading(title, subtitle) {
+      loadingTitle.textContent = title;
+      loadingSubtitle.textContent = subtitle;
+      loadingOverlay.classList.add('active');
+    }
+
+    function hideLoading() {
+      loadingOverlay.classList.remove('active');
+    }
+
+    // Try auto-loading roms.dat if hosted on a web server
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('roms.dat')
+        .then(res => {
+          if (res.ok) return res.text();
+          throw new Error('Local file fetch unavailable');
+        })
+        .then(text => {
+          parseDatContent(text, 'roms.dat');
+        })
+        .catch(() => {
+          // Normal case when opening directly as file:// or if fetch is restricted
+        });
+    });
+  </script>
+</body>
+</html>

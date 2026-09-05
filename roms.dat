@@ -1,0 +1,596 @@
+<?xml version="1.0"?>
+<!DOCTYPE datafile PUBLIC "-//FinalBurn Neo//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">
+
+<datafile>
+	<header>
+		<name>FinalBurn Neo - Arcade Games</name>
+		<description>FinalBurn Neo v1.0.0.03 Arcade Games</description>
+		<category>Standard DatFile</category>
+		<version>1.0.0.03</version>
+		<author>FinalBurn Neo</author>
+		<homepage>https://neo-source.com/</homepage>
+		<url>https://neo-source.com/</url>
+		<clrmamepro forcenodump="ignore"/>
+	</header>
+	<game name="ddragonbl" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon (bootleg with HD6309)</description>
+		<year>1987</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="21j-1.26" merge="21j-1.26" size="32768" crc="ae714964"/>
+		<rom name="21j-2-3.25" merge="21j-2-3.25" size="32768" crc="5779705e"/>
+		<rom name="21a-3.24" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="21j-4.23" merge="21j-4.23" size="32768" crc="6c9f46fa"/>
+		<rom name="ic38" size="16384" crc="6a6a0325"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonbla" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon (bootleg with MC6803)</description>
+		<year>1987</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="5.bin" merge="21j-1.26" size="32768" crc="ae714964"/>
+		<rom name="4.bin" size="65536" crc="48045762"/>
+		<rom name="3.bin" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="2_32.bin" size="16384" crc="67875473"/>
+		<rom name="6.bin" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="1.bin" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="8.bin" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="7.bin" size="65536" crc="f9311f72"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonbl2" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon (bootleg)</description>
+		<year>1987</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="b2_4.bin" size="32768" crc="668dfa19"/>
+		<rom name="b2_5.bin" merge="21j-2-3.25" size="32768" crc="5779705e"/>
+		<rom name="b2_6.bin" size="32768" crc="3bdea613"/>
+		<rom name="b2_7.bin" size="32768" crc="728f87b9"/>
+		<rom name="63701.bin" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="b2_3.bin" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="b2_8.bin" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="11.bin" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="12.bin" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="13.bin" size="65536" crc="c8b91e17"/>
+		<rom name="14.bin" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="15.bin" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="16.bin" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="17.bin" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="18.bin" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="9.bin" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="10.bin" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="19.bin" size="65536" crc="22d65df2"/>
+		<rom name="20.bin" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="b2_1.bin" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="2.bin" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonj" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (Japan set 1)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan</manufacturer>
+		<rom name="21j-1-5.26" size="32768" crc="42045dfd"/>
+		<rom name="21j-2-3.25" merge="21j-2-3.25" size="32768" crc="5779705e"/>
+		<rom name="21j-3.24" size="32768" crc="3bdea613"/>
+		<rom name="21j-4-1.23" size="32768" crc="728f87b9"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonja" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (Japan set 2)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan</manufacturer>
+		<rom name="21j-1-8.26" size="32768" crc="54c1ef98"/>
+		<rom name="21j-2-4.25" size="32768" crc="5cd67657"/>
+		<rom name="21j-3.24" size="32768" crc="3bdea613"/>
+		<rom name="21j-4-2.23" size="32768" crc="6312767d"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonu" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (US set 1)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan (Taito America license)</manufacturer>
+		<rom name="21a-1-5.26" size="32768" crc="e24a6e11"/>
+		<rom name="21j-2-3.25" merge="21j-2-3.25" size="32768" crc="5779705e"/>
+		<rom name="21a-3.24" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="21a-4.23" size="32768" crc="6ea16072"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonua" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (US set 2)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan (Taito America license)</manufacturer>
+		<rom name="21a-1" size="32768" crc="1d625008"/>
+		<rom name="21a-2_4" size="32768" crc="5cd67657"/>
+		<rom name="21a-3" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="21a-4_2" size="32768" crc="9b019598"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragonub" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (US set 3)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan (Taito America license)</manufacturer>
+		<rom name="21a-1_6.bin" size="32768" crc="f354b0e1"/>
+		<rom name="21a-2_4" size="32768" crc="5cd67657"/>
+		<rom name="21a-3" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="21a-4_2" size="32768" crc="9b019598"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (World set 1)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan (Taito license)</manufacturer>
+		<rom name="21j-1.26" size="32768" crc="ae714964"/>
+		<rom name="21j-2-3.25" size="32768" crc="5779705e"/>
+		<rom name="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="21j-4.23" size="32768" crc="6c9f46fa"/>
+		<rom name="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragona" cloneof="ddragon" romof="ddragon" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon (World set 2)</description>
+		<year>1987</year>
+		<manufacturer>Technos Japan (Taito license)</manufacturer>
+		<rom name="e1-1.26" size="32768" crc="4b951643"/>
+		<rom name="21a-2-4.25" size="32768" crc="5cd67657"/>
+		<rom name="21a-3.24" merge="21a-3.24" size="32768" crc="dbf24897"/>
+		<rom name="e4-1.23" size="32768" crc="b1e26935"/>
+		<rom name="21jm-0.ic55" merge="21jm-0.ic55" size="16384" crc="f5232d03"/>
+		<rom name="21j-0-1" merge="21j-0-1" size="32768" crc="9efa95bb"/>
+		<rom name="21j-5" merge="21j-5" size="32768" crc="7a8b8db4"/>
+		<rom name="21j-a" merge="21j-a" size="65536" crc="574face3"/>
+		<rom name="21j-b" merge="21j-b" size="65536" crc="40507a76"/>
+		<rom name="21j-c" merge="21j-c" size="65536" crc="bb0bc76f"/>
+		<rom name="21j-d" merge="21j-d" size="65536" crc="cb4f231b"/>
+		<rom name="21j-e" merge="21j-e" size="65536" crc="a0a0c261"/>
+		<rom name="21j-f" merge="21j-f" size="65536" crc="6ba152f6"/>
+		<rom name="21j-g" merge="21j-g" size="65536" crc="3220a0b6"/>
+		<rom name="21j-h" merge="21j-h" size="65536" crc="65c7517d"/>
+		<rom name="21j-8" merge="21j-8" size="65536" crc="7c435887"/>
+		<rom name="21j-9" merge="21j-9" size="65536" crc="c6640aed"/>
+		<rom name="21j-i" merge="21j-i" size="65536" crc="5effb0a0"/>
+		<rom name="21j-j" merge="21j-j" size="65536" crc="5fb42e7c"/>
+		<rom name="21j-6" merge="21j-6" size="65536" crc="34755de3"/>
+		<rom name="21j-7" merge="21j-7" size="65536" crc="904de6f8"/>
+		<rom name="21j-k-0.101" merge="21j-k-0.101" size="256" crc="fdb130a9"/>
+		<rom name="21j-l-0.16" merge="21j-l-0.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon3b" cloneof="ddragon3" romof="ddragon3" sourcefile="pst90s/d_ddragon3.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon 3: The Rosetta Stone (bootleg)</description>
+		<year>1990</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="dd3.01" size="131072" crc="68321d8b"/>
+		<rom name="dd3.03" size="131072" crc="bc05763b"/>
+		<rom name="dd3.02" size="131072" crc="38d9ae75"/>
+		<rom name="dd3.06" merge="30a13-0.ic43" size="65536" crc="1e974d9b"/>
+		<rom name="dd3.f" merge="30j-7.ic4" size="262144" crc="89d58d32"/>
+		<rom name="dd3.e" merge="30j-6.ic5" size="262144" crc="9bf1538e"/>
+		<rom name="dd3.b" merge="30j-5.ic6" size="262144" crc="8f671a62"/>
+		<rom name="dd3.a" merge="30j-4.ic7" size="262144" crc="0f74ea1c"/>
+		<rom name="dd3.3e" size="131072" crc="726c49b7"/>
+		<rom name="dd3.3d" size="131072" crc="37a1c335"/>
+		<rom name="dd3.3c" size="131072" crc="2bcfe63c"/>
+		<rom name="dd3.3b" size="131072" crc="b864cf17"/>
+		<rom name="dd3.3a" merge="30a12-0.ic8" size="65536" crc="20d64bea"/>
+		<rom name="dd3.2e" size="131072" crc="8c71eb06"/>
+		<rom name="dd3.2d" size="131072" crc="3e134be9"/>
+		<rom name="dd3.2c" size="131072" crc="b4115ef0"/>
+		<rom name="dd3.2b" size="131072" crc="4639333d"/>
+		<rom name="dd3.2a" merge="30a11-0.ic10" size="65536" crc="785d71b0"/>
+		<rom name="dd3.1e" size="131072" crc="04420cc8"/>
+		<rom name="dd3.1d" size="131072" crc="33f97b2f"/>
+		<rom name="dd3.1c" size="131072" crc="0f9a8f2a"/>
+		<rom name="dd3.1b" size="131072" crc="15c91772"/>
+		<rom name="dd3.1a" merge="30a10-0.ic12" size="65536" crc="15e43d12"/>
+		<rom name="dd3.0e" size="131072" crc="894734b3"/>
+		<rom name="dd3.0d" size="131072" crc="cd504584"/>
+		<rom name="dd3.0c" size="131072" crc="38e8a9ad"/>
+		<rom name="dd3.0b" size="131072" crc="80c1cb74"/>
+		<rom name="dd3.0a" merge="30a9-0.ic14" size="65536" crc="5a47e7a4"/>
+		<rom name="dd3.j7" size="262144" crc="3af21dbe"/>
+		<rom name="dd3.j8" size="262144" crc="c28b53cd"/>
+		<rom name="mb7114h.38" merge="mb7114h.ic38" size="256" crc="113c7443"/>
+		<video type="raster" orientation="horizontal" width="320" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon3j" cloneof="ddragon3" romof="ddragon3" sourcefile="pst90s/d_ddragon3.cpp">
+		<description>Double Dragon 3: The Rosetta Stone (Japan)</description>
+		<year>1990</year>
+		<manufacturer>East Technology / Technos Japan</manufacturer>
+		<rom name="30j15-0.ic78" size="262144" crc="40618cbc"/>
+		<rom name="30j14-0.ic79" size="131072" crc="96827e80"/>
+		<rom name="30j13.ic43" merge="30a13-0.ic43" size="65536" crc="1e974d9b"/>
+		<rom name="30j-7.ic4" merge="30j-7.ic4" size="262144" crc="89d58d32"/>
+		<rom name="30j-6.ic5" merge="30j-6.ic5" size="262144" crc="9bf1538e"/>
+		<rom name="30j-5.ic6" merge="30j-5.ic6" size="262144" crc="8f671a62"/>
+		<rom name="30j-4.ic7" merge="30j-4.ic7" size="262144" crc="0f74ea1c"/>
+		<rom name="30j-3.ic9" merge="30j-3.ic9" size="524288" crc="b3151871"/>
+		<rom name="30j12-0.ic8" size="65536" crc="1e9290d7"/>
+		<rom name="30j-2.ic11" merge="30j-2.ic11" size="524288" crc="41c6fb08"/>
+		<rom name="30j11-0.ic10" size="65536" crc="99195b2a"/>
+		<rom name="30j-1.ic13" merge="30j-1.ic13" size="524288" crc="67a6f114"/>
+		<rom name="30j10-0.ic12" size="65536" crc="e3879b5d"/>
+		<rom name="30j-0.ic15" merge="30j-0.ic15" size="524288" crc="f15dafbe"/>
+		<rom name="30j9-0.ic14" size="65536" crc="2759ae84"/>
+		<rom name="30j-8.ic73" merge="30j-8.ic73" size="524288" crc="c3ad40f3"/>
+		<rom name="mb7114h.ic38" merge="mb7114h.ic38" size="256" crc="113c7443"/>
+		<video type="raster" orientation="horizontal" width="320" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon3p" cloneof="ddragon3" romof="ddragon3" sourcefile="pst90s/d_ddragon3.cpp">
+		<comment>Prototype</comment>
+		<description>Double Dragon 3: The Rosetta Stone (prototype)</description>
+		<year>1990</year>
+		<manufacturer>East Technology / Technos Japan</manufacturer>
+		<rom name="30a14-0.ic80" merge="30a14-0.ic78" size="262144" crc="f42fe016"/>
+		<rom name="30a15-0.ic79" merge="30a15-0.ic79" size="131072" crc="ad50e92c"/>
+		<rom name="30a13-0.ic43" merge="30a13-0.ic43" size="65536" crc="1e974d9b"/>
+		<rom name="14.ic45" size="131072" crc="b036a27b"/>
+		<rom name="15.ic46" size="131072" crc="24d0bf41"/>
+		<rom name="30.ic13" size="131072" crc="72fe2b16"/>
+		<rom name="31.ic14" size="131072" crc="ab48a0c8"/>
+		<rom name="23.ic29" size="131072" crc="0768fedd"/>
+		<rom name="24.ic30" size="131072" crc="ec9db18a"/>
+		<rom name="21.ic25" size="131072" crc="902744b9"/>
+		<rom name="22.ic26" size="131072" crc="5b142d4d"/>
+		<rom name="9.ic39" size="131072" crc="726c49b7"/>
+		<rom name="10.ic40" size="131072" crc="37a1c335"/>
+		<rom name="11.ic41" size="131072" crc="2bcfe63c"/>
+		<rom name="12.ic42" size="131072" crc="b864cf17"/>
+		<rom name="4.ic33" size="131072" crc="8c71eb06"/>
+		<rom name="5.ic34" size="131072" crc="3e134be9"/>
+		<rom name="6.ic35" size="131072" crc="b4115ef0"/>
+		<rom name="7.ic36" size="131072" crc="4639333d"/>
+		<rom name="16.ic19" size="131072" crc="04420cc8"/>
+		<rom name="17.ic20" size="131072" crc="33f97b2f"/>
+		<rom name="18.ic21" size="131072" crc="0f9a8f2a"/>
+		<rom name="19.ic22" size="131072" crc="15c91772"/>
+		<rom name="25.ic3" size="131072" crc="894734b3"/>
+		<rom name="26.ic4" size="131072" crc="cd504584"/>
+		<rom name="27.ic5" size="131072" crc="38e8a9ad"/>
+		<rom name="28.ic6" size="131072" crc="80c1cb74"/>
+		<rom name="30a12-0.ic43" size="131072" crc="91da004c"/>
+		<rom name="30a11-0.ic37" size="131072" crc="5f419232"/>
+		<rom name="30a10-0.ic23" size="131072" crc="12f641ba"/>
+		<rom name="30a9-0.ic7" size="131072" crc="9199a77b"/>
+		<rom name="2.ic73" size="262144" crc="3af21dbe"/>
+		<rom name="3.ic74" size="262144" crc="c28b53cd"/>
+		<rom name="30.ic38" merge="mb7114h.ic38" size="256" crc="113c7443"/>
+		<video type="raster" orientation="horizontal" width="320" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon3" sourcefile="pst90s/d_ddragon3.cpp">
+		<description>Double Dragon 3: The Rosetta Stone (US)</description>
+		<year>1990</year>
+		<manufacturer>East Technology / Technos Japan</manufacturer>
+		<rom name="30a14-0.ic78" size="262144" crc="f42fe016"/>
+		<rom name="30a15-0.ic79" size="131072" crc="ad50e92c"/>
+		<rom name="30a13-0.ic43" size="65536" crc="1e974d9b"/>
+		<rom name="30j-7.ic4" size="262144" crc="89d58d32"/>
+		<rom name="30j-6.ic5" size="262144" crc="9bf1538e"/>
+		<rom name="30j-5.ic6" size="262144" crc="8f671a62"/>
+		<rom name="30j-4.ic7" size="262144" crc="0f74ea1c"/>
+		<rom name="30j-3.ic9" size="524288" crc="b3151871"/>
+		<rom name="30a12-0.ic8" size="65536" crc="20d64bea"/>
+		<rom name="30j-2.ic11" size="524288" crc="41c6fb08"/>
+		<rom name="30a11-0.ic10" size="65536" crc="785d71b0"/>
+		<rom name="30j-1.ic13" size="524288" crc="67a6f114"/>
+		<rom name="30a10-0.ic12" size="65536" crc="15e43d12"/>
+		<rom name="30j-0.ic15" size="524288" crc="f15dafbe"/>
+		<rom name="30a9-0.ic14" size="65536" crc="5a47e7a4"/>
+		<rom name="30j-8.ic73" size="524288" crc="c3ad40f3"/>
+		<rom name="mb7114h.ic38" size="256" crc="113c7443"/>
+		<video type="raster" orientation="horizontal" width="320" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon2j" cloneof="ddragon2" romof="ddragon2" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon II: The Revenge (Japan)</description>
+		<year>1988</year>
+		<manufacturer>Technos Japan</manufacturer>
+		<rom name="26a9-0_j.ic38" size="32768" crc="5e4fcdff"/>
+		<rom name="26aa-0_j.ic52" size="32768" crc="bfb4ee04"/>
+		<rom name="26ab-0.ic53" merge="26ab-0.bin" size="32768" crc="49ddddcd"/>
+		<rom name="26ac-0_j.ic63" size="32768" crc="165858c7"/>
+		<rom name="26ae-0.ic37" merge="26ae-0.bin" size="65536" crc="ea437867"/>
+		<rom name="26ad-0.ic41" size="32768" crc="3788af3b"/>
+		<rom name="26a8-0e.19" merge="26a8-0e.19" size="65536" crc="4e80cd36"/>
+		<rom name="26j0-0.bin" merge="26j0-0.bin" size="131072" crc="db309c84"/>
+		<rom name="26j1-0.bin" merge="26j1-0.bin" size="131072" crc="c3081e0c"/>
+		<rom name="26af-0.bin" merge="26af-0.bin" size="131072" crc="3a615aad"/>
+		<rom name="26j2-0.bin" merge="26j2-0.bin" size="131072" crc="589564ae"/>
+		<rom name="26j3-0.bin" merge="26j3-0.bin" size="131072" crc="daf040d6"/>
+		<rom name="26a10-0.bin" merge="26a10-0.bin" size="131072" crc="6d16d889"/>
+		<rom name="26j4-0.bin" merge="26j4-0.bin" size="131072" crc="a8c93e76"/>
+		<rom name="26j5-0.bin" merge="26j5-0.bin" size="131072" crc="ee555237"/>
+		<rom name="26j6-0.bin" merge="26j6-0.bin" size="131072" crc="a84b2a29"/>
+		<rom name="26j7-0.bin" merge="26j7-0.bin" size="131072" crc="bc6a48d5"/>
+		<rom name="21j-k-0" merge="21j-k-0" size="256" crc="fdb130a9"/>
+		<rom name="prom.16" merge="prom.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon2u" cloneof="ddragon2" romof="ddragon2" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon II: The Revenge (US)</description>
+		<year>1988</year>
+		<manufacturer>Technos Japan</manufacturer>
+		<rom name="26a9-04.bin" merge="26a9-04.bin" size="32768" crc="f2cfc649"/>
+		<rom name="26aa-03.bin" merge="26aa-03.bin" size="32768" crc="44dd5d4b"/>
+		<rom name="26ab-0.bin" merge="26ab-0.bin" size="32768" crc="49ddddcd"/>
+		<rom name="26ac-02.bin" size="32768" crc="097eaf26"/>
+		<rom name="26ae-0.bin" merge="26ae-0.bin" size="65536" crc="ea437867"/>
+		<rom name="26ad-0.bin" merge="26ad-0.bin" size="32768" crc="75e36cd6"/>
+		<rom name="26a8-0.bin" size="65536" crc="3ad1049c"/>
+		<rom name="26j0-0.bin" merge="26j0-0.bin" size="131072" crc="db309c84"/>
+		<rom name="26j1-0.bin" merge="26j1-0.bin" size="131072" crc="c3081e0c"/>
+		<rom name="26af-0.bin" merge="26af-0.bin" size="131072" crc="3a615aad"/>
+		<rom name="26j2-0.bin" merge="26j2-0.bin" size="131072" crc="589564ae"/>
+		<rom name="26j3-0.bin" merge="26j3-0.bin" size="131072" crc="daf040d6"/>
+		<rom name="26a10-0.bin" merge="26a10-0.bin" size="131072" crc="6d16d889"/>
+		<rom name="26j4-0.bin" merge="26j4-0.bin" size="131072" crc="a8c93e76"/>
+		<rom name="26j5-0.bin" merge="26j5-0.bin" size="131072" crc="ee555237"/>
+		<rom name="26j6-0.bin" merge="26j6-0.bin" size="131072" crc="a84b2a29"/>
+		<rom name="26j7-0.bin" merge="26j7-0.bin" size="131072" crc="bc6a48d5"/>
+		<rom name="21j-k-0" merge="21j-k-0" size="256" crc="fdb130a9"/>
+		<rom name="prom.16" merge="prom.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon2bl" cloneof="ddragon2" romof="ddragon2" sourcefile="pre90s/d_ddragon.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon II: The Revenge (US, bootleg, set 1)</description>
+		<year>1988</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="3" size="32768" crc="5cc38bad"/>
+		<rom name="4" size="32768" crc="78750947"/>
+		<rom name="5" merge="26ab-0.bin" size="32768" crc="49ddddcd"/>
+		<rom name="6" size="32768" crc="097eaf26"/>
+		<rom name="2" merge="26ae-0.bin" size="65536" crc="ea437867"/>
+		<rom name="11" merge="26ad-0.bin" size="32768" crc="75e36cd6"/>
+		<rom name="1" size="65536" crc="3ad1049c"/>
+		<rom name="27" size="65536" crc="fe42df5d"/>
+		<rom name="26" size="65536" crc="42f582c6"/>
+		<rom name="23" size="65536" crc="e157319f"/>
+		<rom name="22" size="65536" crc="82e952c9"/>
+		<rom name="25" size="65536" crc="4a4a085d"/>
+		<rom name="24" size="65536" crc="c9d52536"/>
+		<rom name="21" size="65536" crc="32ab0897"/>
+		<rom name="20" size="65536" crc="a68e168f"/>
+		<rom name="17" size="65536" crc="882f99b1"/>
+		<rom name="16" size="65536" crc="e2fe3eca"/>
+		<rom name="18" size="65536" crc="0e1c6c63"/>
+		<rom name="19" size="65536" crc="0e21eae0"/>
+		<rom name="15" size="65536" crc="3c3f16f6"/>
+		<rom name="13" size="65536" crc="7c21be72"/>
+		<rom name="14" size="65536" crc="e92f91f4"/>
+		<rom name="12" size="65536" crc="6896e2f7"/>
+		<rom name="7" size="65536" crc="6d9e3f0f"/>
+		<rom name="9" size="65536" crc="0c15dec9"/>
+		<rom name="8" size="65536" crc="151b22b4"/>
+		<rom name="10" size="65536" crc="ae2fc028"/>
+		<rom name="21j-k-0" merge="21j-k-0" size="256" crc="fdb130a9"/>
+		<rom name="prom.16" merge="prom.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon2b2" cloneof="ddragon2" romof="ddragon2" sourcefile="pre90s/d_ddragon.cpp">
+		<comment>Bootleg</comment>
+		<description>Double Dragon II: The Revenge (US, bootleg, set 2)</description>
+		<year>1988</year>
+		<manufacturer>bootleg</manufacturer>
+		<rom name="dd2ub-3.3g" size="32768" crc="f5bd19d2"/>
+		<rom name="dd2ub-4.4g" size="32768" crc="78750947"/>
+		<rom name="26ab-0.bin" merge="26ab-0.bin" size="32768" crc="49ddddcd"/>
+		<rom name="dd2ub-6.5g" size="32768" crc="097eaf26"/>
+		<rom name="26ae-0.bin" merge="26ae-0.bin" size="65536" crc="ea437867"/>
+		<rom name="26ad-0.bin" merge="26ad-0.bin" size="32768" crc="75e36cd6"/>
+		<rom name="26a8-0.bin" size="65536" crc="3ad1049c"/>
+		<rom name="dd2ub-27.8n" size="65536" crc="fe42df5d"/>
+		<rom name="dd2ub-26.7n" size="65536" crc="d2d9a400"/>
+		<rom name="dd2ub-23.8k" size="65536" crc="e157319f"/>
+		<rom name="dd2ub-22.7k" size="65536" crc="9f10018c"/>
+		<rom name="dd2ub-25.6n" size="65536" crc="4a4a085d"/>
+		<rom name="dd2ub-24.5n" size="65536" crc="c9d52536"/>
+		<rom name="dd2ub-21.8g" size="65536" crc="32ab0897"/>
+		<rom name="dd2ub-20.7g" size="65536" crc="f564bd18"/>
+		<rom name="dd2ub-17.8d" size="65536" crc="882f99b1"/>
+		<rom name="dd2ub-16.7d" size="65536" crc="cf3c34d5"/>
+		<rom name="dd2ub-18.9d" size="65536" crc="0e1c6c63"/>
+		<rom name="dd2ub-19.10d" size="65536" crc="0e21eae0"/>
+		<rom name="dd2ub-15.5d" size="65536" crc="3c3f16f6"/>
+		<rom name="dd2ub-13.4d" size="65536" crc="7c21be72"/>
+		<rom name="dd2ub-14.5b" size="65536" crc="e92f91f4"/>
+		<rom name="dd2ub-12.4b" size="65536" crc="6896e2f7"/>
+		<rom name="dd2ub-7.3f" size="65536" crc="6d9e3f0f"/>
+		<rom name="dd2ub-9.5c" size="65536" crc="0c15dec9"/>
+		<rom name="dd2ub-8.3d" size="65536" crc="151b22b4"/>
+		<rom name="dd2ub-10.5b" size="65536" crc="95885e12"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+	<game name="ddragon2" sourcefile="pre90s/d_ddragon.cpp">
+		<description>Double Dragon II: The Revenge (World)</description>
+		<year>1988</year>
+		<manufacturer>Technos Japan</manufacturer>
+		<rom name="26a9-04.bin" size="32768" crc="f2cfc649"/>
+		<rom name="26aa-03.bin" size="32768" crc="44dd5d4b"/>
+		<rom name="26ab-0.bin" size="32768" crc="49ddddcd"/>
+		<rom name="26ac-0e.63" size="32768" crc="57acad2c"/>
+		<rom name="26ae-0.bin" size="65536" crc="ea437867"/>
+		<rom name="26ad-0.bin" size="32768" crc="75e36cd6"/>
+		<rom name="26a8-0e.19" size="65536" crc="4e80cd36"/>
+		<rom name="26j0-0.bin" size="131072" crc="db309c84"/>
+		<rom name="26j1-0.bin" size="131072" crc="c3081e0c"/>
+		<rom name="26af-0.bin" size="131072" crc="3a615aad"/>
+		<rom name="26j2-0.bin" size="131072" crc="589564ae"/>
+		<rom name="26j3-0.bin" size="131072" crc="daf040d6"/>
+		<rom name="26a10-0.bin" size="131072" crc="6d16d889"/>
+		<rom name="26j4-0.bin" size="131072" crc="a8c93e76"/>
+		<rom name="26j5-0.bin" size="131072" crc="ee555237"/>
+		<rom name="26j6-0.bin" size="131072" crc="a84b2a29"/>
+		<rom name="26j7-0.bin" size="131072" crc="bc6a48d5"/>
+		<rom name="21j-k-0" size="256" crc="fdb130a9"/>
+		<rom name="prom.16" size="512" crc="46339529"/>
+		<video type="raster" orientation="horizontal" width="256" height="240" aspectx="4" aspecty="3"/>
+		<driver status="good"/>
+	</game>
+</datafile>
