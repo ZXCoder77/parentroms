@@ -985,7 +985,7 @@
     btnLoadSample.addEventListener('click', async () => {
       showLoading('Carregando roms.dat...', 'Lendo arquivo local da pasta...');
       try {
-        const response = await fetch('roms.dat');
+        const response = await fetch('roms.dat?t=' + Date.now(), { cache: 'no-store' });
         if (!response.ok) throw new Error('Não foi possível carregar o arquivo local via HTTP.');
         const text = await response.text();
         parseDatContent(text, 'roms.dat');
@@ -1460,7 +1460,7 @@
 
     // Try auto-loading roms.dat if hosted on a web server
     window.addEventListener('DOMContentLoaded', () => {
-      fetch('roms.dat')
+      fetch('roms.dat?t=' + Date.now(), { cache: 'no-store' })
         .then(res => {
           if (res.ok) return res.text();
           throw new Error('Local file fetch unavailable');
